@@ -1,0 +1,38 @@
+create database IMDB;
+use IMDB;
+create table movie(movie_id integer primary key, media text not null);
+insert into movie(movie_id,media) values 
+(1001, "Video"),
+(1002, "Image"),
+(1003, "Image"),
+(1004, "Video"),
+(1005, "Video"),
+(1006, "Image"),
+(1007, "Image"),
+(1008, "Video");
+
+create table genre(gen_id varchar(50) primary key, movie_id integer);
+insert into genre(gen_id, movie_id) values 
+("A001", 1003),
+("A002", 1001),
+("A003", 1004);
+
+create table user(user_id varchar(5) , review varchar(50), movie_id integer primary key);
+insert into user(user_id, review, movie_id) values 
+("U010", "Family story",1003),
+("U030", "Love story",1001),
+("U050", "Comedy story",1004),
+("U020", "Terror story",1006);
+
+create table artist(art_name varchar(10) , skills varchar(10), role varchar(10), movie_id int references movie);
+insert into artist (art_name, skills, role, movie_id) values
+("Ginsey", "Makeup Man" , "Beautician", 1003),
+("Lata", "Dancer" , "Fighter", 1001),
+("Robin", "Fighter" , "Assistant", 1004),
+("Hitler", "Singer" , "Gitarist", 1006),
+("Amitabh", "Side Actor" , "Comedian", 1002);
+
+select * from artist;
+select * from movie;
+select * from genre;
+select * from user;
